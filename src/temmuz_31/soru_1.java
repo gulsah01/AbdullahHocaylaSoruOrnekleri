@@ -3,10 +3,7 @@ package temmuz_31;
 import java.util.Scanner;
 
 public class soru_1 {
-    static String kartNo="123456";
-    static String sifre ="1234";
-    static Scanner scan =new Scanner(System.in);
-    public static void main(String[] args) {
+
         /*
     ATM
 Kullanicidan giriş için kart numarasi ve şifresini isteyin, eger herhangi birini yanlis girerse tekrar isteyin.
@@ -23,12 +20,24 @@ Para gönderme işleminde istenen iban TR ile baslamali ve toplam 26 karakterli 
 
 Sifre değiştirme işleminde mevcut şifreyi teyit ettikten sonra, sifre değişiklik işlemini yapmali,
      */
-        giris();
+        static String kartNo="123456";
+    static String sifre ="1234";
+    static Scanner scan =new Scanner(System.in);
+    static double bakiye=50000;
+
+        public static void main(String[] args) {
+
+            giris();
 
     }
 
     public static void giris() {
+/*
+Kullanicidan giriş için kart numarasi ve şifresini isteyin, eger herhangi birini yanlis girerse tekrar isteyin.
+Kart numarasi aralarda boşluk ile girerse de eger doğruysa kabul edin.
+Kart numarasi ve sifre dogrulanirsa kullanicinin yapabileceği işlemleri ekrana yazdirin,
 
+ */
         System.out.println("KART NUMARASI GIRINIZ:  ");
         String kKartNo=scan.nextLine().replace(" ","");
         System.out.println("SIFRENIZI GIRINIZ:  ");
@@ -59,16 +68,95 @@ Sifre değiştirme işleminde mevcut şifreyi teyit ettikten sonra, sifre deği�
             case 1:{
                 bakiyeSorgula();
             }
-            case 2:{}
-            case 3:{}
-            case 4:{}
-            case 5:{}
-            case 6:{}
+            case 2:{
+                System.out.println("YATIRMAK ISTEDIGINIZ MIKTARI GIRINIZ: ");
+                double miktar= scan.nextDouble();
+                paraYatirma(miktar);
+            }
+            case 3:{
+                System.out.println("CEKMEK ISTEDIGINIZ MIKTARI GIRINIZ:  ");
+                double miktar= scan.nextDouble();
+                paraCekme(miktar);
+            }
+            case 4:{
+                paraGonderme();
+
+            }
+            case 5:{
+                sifreDegistirme();
+            }
+            case 6:{
+                System.out.println("BIZI SECTIGINIZ ICIN TESEKKURLER...");
+                System.exit(0);
+            }
 
 
+            default:{
+                System.out.println("YANLIS GIRIS YAPTINIZ...");
+                menu();
+            }
         }
     }
 
+    public static void sifreDegistirme() {
+        //Sifre değiştirme işleminde mevcut şifreyi teyit ettikten sonra, sifre değişiklik işlemini yapmali,
+        System.out.print("MEVCUT SIFRENIZI GIRINIZ:  ");
+       String kSifre=scan.next();
+       if (kSifre.equals(sifre)){
+           System.out.print("YENI SIFRE GIRINIZ: ");
+           sifre=scan.next();
+           giris();
+       }else {
+           System.out.println("SENDE KIMSIN!!!!");
+           sifreDegistirme();
+       }
+    }
+
+    public static void paraGonderme() {
+        // Para çekme ve para gonderme işleminde mevcut bakiyeden buyuk para çekilemez,
+        //Para gönderme işleminde istenen iban TR ile baslamali ve toplam 26 karakterli olmali, eger değilse menü ekranina geri donsun.
+
+        scan.nextLine();//dummy
+        System.out.println("PARA GONDERILECEK IBAN GIRINIZ: ");
+        String iban=scan.nextLine().toUpperCase().replace(" ","");
+        if (iban.startsWith("TR")&&iban.length()==26){
+            System.out.println("GONDERILEEK MIKTAR GIRINIZ: ");
+
+            double miktar= scan.nextDouble();
+            if (miktar<=miktar) {
+                bakiye -= miktar;// bakiye = bakiye-miktar
+                bakiyeSorgula();
+            }else {
+                System.out.println("bakiyeniz yetersiz...");
+                menu();
+            }
+        }else{
+            System.out.println("HATALI IBan GIRDINIZ...");
+            menu();
+        }
+    }
+
+    public static void paraCekme(double miktar) {
+       // Para çekme ve para gonderme işleminde mevcut bakiyeden buyuk para çekilemez,
+        if (miktar<=bakiye){
+            bakiye-=miktar;
+            bakiyeSorgula();
+        }else {
+            System.out.println("BAKIYEDEN BUYUK MIKTAR CEKEMEZSINIZ...\n"+
+                    "MIKTAR GIRINIZ: ");
+            double yeniMiktar =scan.nextDouble();
+            paraCekme(yeniMiktar);
+        }
+
+    }
+
+    public static void paraYatirma(double miktar) {
+         bakiye += miktar;
+        bakiyeSorgula();
+    }
+
     public static void bakiyeSorgula() {
+        System.out.println("BAKIYE: "+bakiye+"$");
+        menu();
     }
 }
