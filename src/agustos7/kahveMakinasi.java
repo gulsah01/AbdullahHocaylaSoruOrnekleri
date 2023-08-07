@@ -1,5 +1,7 @@
 package agustos7;
 
+import java.util.Scanner;
+
 public class kahveMakinasi {
     /*Basit bir Kahve makinesi oluşturun.
 1. Şart
@@ -26,5 +28,33 @@ public class kahveMakinasi {
     Türk Kahvesi orta boy hazırdır. Afiyet olsun !!!
 
      */
+    static String kahveCesidi, sut, seker , kahveBoyutu = "";
+    static Scanner scan = new Scanner(System.in);
+
+    static void menu() {
+        System.out.println("**********KAHVECIYE HOSGELDINIZ************");
+        do {
+            System.out.println("*****MENU******\n" +
+                    "Turk Kahvesi\n" +
+                    "Filtre Kahve\n" +
+                    "Americano\n"+
+                    "SECIM:");
+            kahveCesidi=scan.nextLine();
+            if (!kahveCesidi.equalsIgnoreCase("turk kahvesi")&&
+            !kahveCesidi.equalsIgnoreCase("filtre kahve")&&
+            !kahveCesidi.equalsIgnoreCase("americano"))
+                System.out.println("BU URUN ENUDE YOK.....");
+
+        }while (!kahveCesidi.equalsIgnoreCase("turk kahvesi")&&
+                !kahveCesidi.equalsIgnoreCase("filtre kahve")&&
+                !kahveCesidi.equalsIgnoreCase("americano"));}
+
+       // 2.Şart
+       // Kahve seçildikten sonra sistem kullanıcıya "Süt eklemek istemisiniz?(Evet veya Hayır olarak cevaplayınız)
+
+        static void sutEkleme(){
+        System.out.println("Sur eklemek ister misiniz (Evet yada Hayir olarak cevaplayiniz)");
+        sut=scan.next();
+    }
 
 }
