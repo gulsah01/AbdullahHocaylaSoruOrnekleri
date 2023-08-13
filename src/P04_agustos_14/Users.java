@@ -1,8 +1,9 @@
 package P04_agustos_14;
 
-public class user {
-    /*
-    Bu uygulama kulanıcıların bir ArrayListe kayıt zamanını da alarak
+import java.time.LocalDateTime;
+
+/*
+Bu uygulama kulanıcıların bir ArrayListe kayıt zamanını da alarak
      ekleyen ve sonrasında her dakikanın ilk 10 saniyesinde kaydolanları
      şanslı kullanıcı olarak ekrana yazdıran bir uygulamadır.
      Bunun için;
@@ -13,7 +14,17 @@ public class user {
      3- Registration(Kayıt) classı na aynı zamanda kendine verilen
      ArrayListteki userlardan(kullanıcı) her dakikanın ilk 10  saniyesinde kaydolanları
      yazdıran printHappyUsers(sanslıKullanıcı) isminde bir metod daha ekleyiniz.
+ */
+public class Users {
+    String name = "";
+    LocalDateTime registerDate;
 
-     */
+    public static void main(String[] args) {
 
+        Registration registration = new Registration();
+
+        System.out.println(registration.register());
+        registration.printHappyUsers(registration.register());
+
+    }
 }
