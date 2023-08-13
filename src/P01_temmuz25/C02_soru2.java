@@ -1,4 +1,4 @@
-package temmuz25;
+package P01_temmuz25;
 
 import java.util.Scanner;
 

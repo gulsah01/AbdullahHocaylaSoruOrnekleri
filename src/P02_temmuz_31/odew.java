@@ -1,4 +1,4 @@
-package temmuz_31;
+package P02_temmuz_31;
 
 public class odew {
     /*      TC kimlik numarasının son rakamı çift olmak zorundadır. 0 rakamı ile başlayamaz.

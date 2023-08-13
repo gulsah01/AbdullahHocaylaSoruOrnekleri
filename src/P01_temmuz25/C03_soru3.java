@@ -1,4 +1,4 @@
-package temmuz25;
+package P01_temmuz25;
 
 public class C03_soru3 {
     public static void main(String[] args) {
