@@ -15,16 +15,18 @@ Bu uygulama kulanıcıların bir ArrayListe kayıt zamanını da alarak
      ArrayListteki userlardan(kullanıcı) her dakikanın ilk 10  saniyesinde kaydolanları
      yazdıran printHappyUsers(sanslıKullanıcı) isminde bir metod daha ekleyiniz.
  */
-public class Users {
-    String name = "";
+public class User {
+    String name ;
     LocalDateTime registerDate;
 
-    public static void main(String[] args) {
-
-        Registration registration = new Registration();
-
-        System.out.println(registration.register());
-        registration.printHappyUsers(registration.register());
-
+    public User() {// parametresiz cons olusturuldu
     }
+
+    public User(String name, LocalDateTime registerDate) {
+        this.name = name;
+
+        this.registerDate = registerDate;
+    }
+
+
 }
