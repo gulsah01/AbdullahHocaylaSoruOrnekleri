@@ -13,8 +13,6 @@ public class Methodlar {
        String kartNo=scan.nextLine();
        System.out.println("SIFRE GIRINIZ: ");
        int sifre =scan.nextInt();
-
-
    }
     
 
@@ -24,10 +22,12 @@ public class Methodlar {
         System.out.println("SIFRE GIRINIZ: ");
         int sifre =scan.nextInt();
         System.out.println("BAKIYE GIRINIZ: ");
+
         double bakiye =scan.nextDouble();
         Kullanici kullanici =new Kullanici(kartNo,sifre,bakiye);
 
     }
+
 
     void bakiyeSorgula() {
         String kartNo = scan.nextLine();
