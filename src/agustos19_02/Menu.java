@@ -11,6 +11,9 @@ public class Menu {
                 "SISTEME GIRIS ICINB '2'YE BASINIZ.. ");
 
 
+
+
+
         int secim=scan.nextInt();
 
 
